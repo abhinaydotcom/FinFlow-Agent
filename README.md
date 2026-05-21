@@ -1,9 +1,12 @@
 # 🧾 Intelligent Invoice Processing & Reconciliation Agent
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=flat-square&logo=vercel)](https://fin-flow-agent-64y1qkpgn-abhinay-s-projects3.vercel.app/)
 [![Node.js](https://img.shields.io/badge/Node.js-v22.18.0-green.svg)](https://nodejs.org/)
 [![Express.js](https://img.shields.io/badge/Express.js-v4.19.2-blue.svg)](https://expressjs.com/)
 [![Zod](https://img.shields.io/badge/Validation-Zod%20v3.23-purple.svg)](https://zod.dev/)
 [![Jest](https://img.shields.io/badge/Testing-Jest-orange.svg)](https://jestjs.io/)
 [![Gemini](https://img.shields.io/badge/AI--Engine-Google%20Gemini%202.5--flash-red.svg)](https://deepmind.google/technologies/gemini/)
+
+🔗 **Live Deployment**: [fin-flow-agent.vercel.app](https://fin-flow-agent-64y1qkpgn-abhinay-s-projects3.vercel.app/)
 
 An advanced, production-ready accounts-payable AI agent built on **Node.js** and **Express.js** to ingest vendor invoices (via PDF/text/image uploads or raw JSON payloads), extract key fields using multimodal LLMs, validate them structurally, match them against Purchase Orders (POs), flag anomalies dynamically, and return structured JSON reconciliation reports.
 
