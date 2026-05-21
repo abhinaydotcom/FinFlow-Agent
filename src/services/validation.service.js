@@ -16,7 +16,7 @@ const lineItemSchema = z.object({
   unit_price: z.number({
     required_error: 'unit_price is required',
     invalid_type_error: 'unit_price must be a number',
-  }).positive('unit_price must be greater than 0'),
+  }).nonnegative('unit_price must be greater than or equal to 0'),
 });
 
 // Full Invoice Zod schema

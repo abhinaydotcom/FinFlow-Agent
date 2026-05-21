@@ -1,9 +1,16 @@
 import request from 'supertest';
 import app from '../src/app.js';
 import { dbService } from '../src/services/db.service.js';
+import { llmService } from '../src/services/llm.service.js';
 
 describe('FinFlow AP Reconciliation Agent API Tests', () => {
   
+  beforeAll(() => {
+    // Disable external LLM connections in testing to ensure deterministic, fast, offline tests
+    llmService.geminiClient = null;
+    llmService.openaiClient = null;
+  });
+
   beforeEach(() => {
     // Reset database to seed POs and clear previous uploads for isolation
     dbService.clearStore();

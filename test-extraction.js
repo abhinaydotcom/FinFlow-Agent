@@ -12,19 +12,19 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function runTest() {
-  console.log('Starting Gemini API Extraction Test on invoice.pdf...');
+  console.log('Starting Gemini API Extraction Test on OD126583062707687000.pdf...');
   console.log('Using API Key: ' + (process.env.GEMINI_API_KEY ? 'Present (starts with ' + process.env.GEMINI_API_KEY.slice(0, 8) + '...)' : 'MISSING!'));
 
-  const pdfPath = path.join(__dirname, 'invoice.pdf');
+  const pdfPath = path.join(__dirname, 'OD126583062707687000.pdf');
   if (!fs.existsSync(pdfPath)) {
-    console.error('invoice.pdf not found in root directory!');
+    console.error('OD126583062707687000.pdf not found in root directory!');
     process.exit(1);
   }
 
   const fileBuffer = fs.readFileSync(pdfPath);
   const mockFile = {
     fieldname: 'invoice',
-    originalname: 'invoice.pdf',
+    originalname: 'OD126583062707687000.pdf',
     encoding: '7bit',
     mimetype: 'application/pdf',
     buffer: fileBuffer,
