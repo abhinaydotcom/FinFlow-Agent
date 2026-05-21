@@ -46,15 +46,25 @@ class LlmService {
       }
     }
 
-    // Determine extraction path
+    // Determine extraction path with automatic, self-healing fallback
     if (this.geminiClient) {
-      return this.extractWithGemini(file);
-    } else if (this.openaiClient) {
-      return this.extractWithOpenai(fileText);
-    } else {
-      logger.info('No LLM API keys found. Falling back to the robust Local Regex & Parsing Engine.');
-      return this.extractWithMockEngine(fileText, file.originalname);
+      try {
+        return await this.extractWithGemini(file);
+      } catch (error) {
+        logger.warn(`Gemini API extraction failed: ${error.message}. Automatically falling back to Local Regex & Parsing Engine.`);
+      }
     }
+    
+    if (this.openaiClient) {
+      try {
+        return await this.extractWithOpenai(fileText);
+      } catch (error) {
+        logger.warn(`OpenAI API extraction failed: ${error.message}. Automatically falling back to Local Regex & Parsing Engine.`);
+      }
+    }
+
+    logger.info('No LLM API keys found or service unavailable. Falling back to the robust Local Regex & Parsing Engine.');
+    return this.extractWithMockEngine(fileText, file.originalname);
   }
 
   /**
